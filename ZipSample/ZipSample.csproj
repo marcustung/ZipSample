@@ -65,7 +65,10 @@
     <Compile Include="test\ConcatTests.cs" />
     <Compile Include="test\ExceptTests.cs" />
     <Compile Include="test\IntersectTests.cs" />
+    <Compile Include="test\Mylinq.cs" />
     <Compile Include="test\OfTypeTests.cs" />
+    <Compile Include="test\Order.cs" />
+    <Compile Include="test\OrderDTO.cs" />
     <Compile Include="test\Repository.cs" />
     <Compile Include="test\ReverseTests.cs" />
     <Compile Include="test\UnionTests.cs" />

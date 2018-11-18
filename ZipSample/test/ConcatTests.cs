@@ -1,6 +1,5 @@
 ﻿using ExpectedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,20 +9,47 @@ namespace ZipSample.test
     public class ConcatTests
     {
         [TestMethod]
-        public void concat_integers()
+        public void concat_empolyee()
         {
-            var first = new int[] {1, 3, 5};
-            var second = new int[] {2, 4, 6};
+            var firstEmployee = new List<Employee>
+            {
+                new Employee() {Id = 91, Name = "Joey"},
+            };
+            var secondEmployee = new List<Employee>
 
-            var actual = MyConcat(first, second).ToArray();
+            {
+                new Employee(){ Id = 1,Name = "David"},
+                new Employee(){ Id = 2,Name = "Tom"}
+            }; ;
 
-            var expected = new int[] {1, 3, 5, 2, 4, 6};
+            var actual = firstEmployee.MyConcat(secondEmployee).ToList();
+
+            var expected = new List<Employee>()
+            {
+                new Employee() {Id = 91, Name = "Joey"},
+                new Employee(){ Id = 1,Name = "David"},
+                new Employee(){ Id = 2,Name = "Tom"}
+            };
+
             expected.ToExpectedObject().ShouldEqual(actual);
         }
 
-        private IEnumerable<int> MyConcat(IEnumerable<int> first, IEnumerable<int> second)
+        [TestMethod]
+        public void concat_integers()
         {
-            throw new NotImplementedException();
+            var first = new int[] { 1, 3, 5 };
+            var second = new int[] { 2, 4, 6 };
+
+            var actual = first.MyConcat(second).ToArray();
+
+            var expected = new int[] { 1, 3, 5, 2, 4, 6 };
+            expected.ToExpectedObject().ShouldEqual(actual);
+        }
+
+        public class Employee
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
         }
     }
 }
